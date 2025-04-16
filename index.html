@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disk Scheduling Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Disk Scheduling Simulator</h1>
+        
+        <div class="input-section">
+            <div class="form-group">
+                <label for="trackCount">Number of Tracks:</label>
+                <input type="number" id="trackCount" min="1" value="200">
+            </div>
+            
+            <div class="form-group">
+                <label for="initialPosition">Initial Head Position:</label>
+                <input type="number" id="initialPosition" min="0" value="50">
+            </div>
+            
+            <div class="form-group">
+                <label for="requestSequence">Request Sequence (comma-separated):</label>
+                <input type="text" id="requestSequence" value="82,170,43,140,24,16,190">
+            </div>
+            
+            <div class="form-group">
+                <label for="requestFile">Or Upload Request File:</label>
+                <input type="file" id="requestFile" accept=".txt">
+                <small class="help-text">File should contain comma-separated track numbers.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="algorithm">Scheduling Algorithm:</label>
+                <select id="algorithm">
+                    <option value="FCFS">First Come First Serve (FCFS)</option>
+                    <option value="SSTF">Shortest Seek Time First (SSTF)</option>
+                    <option value="SCAN">SCAN (Elevator)</option>
+                    <option value="CSCAN">C-SCAN (Circular SCAN)</option>
+                </select>
+            </div>
+            
+            <button id="simulateBtn">Simulate</button>
+        </div>
+        
+        <div class="results-section">
+            <h2>Results</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="gantt">Gantt Chart</button>
+                <button class="tab-btn" data-tab="graph">Graph View</button>
+            </div>
+            <div id="ganttChart" class="gantt-chart tab-content active"></div>
+            <div id="graphView" class="graph-view tab-content"></div>
+            <div class="stats">
+                <p>Total Head Movements: <span id="totalMovements">0</span></p>
+                <p>Average Seek Time: <span id="avgSeekTime">0</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
